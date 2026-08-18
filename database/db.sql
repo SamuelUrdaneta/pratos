@@ -14,6 +14,6 @@ CREATE TABLE cardapio (
     preco DECIMAL(5, 2) NOT NULL,
     descricao VARCHAR (250) NOT NULL,
     categoria VARCHAR(250 ) NOT NULL,
-    usuario_id INTO NOT NULL, 
+    usuario_id INT NOT NULL, 
     FOREIGN KEY(usuario_id) REFERENCES usuarios(id) 
 );
