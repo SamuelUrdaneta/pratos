@@ -1,6 +1,6 @@
 <?php 
 
-include "..infra/conexão.php"
+include "../infra/conexão.php"
 
 $nome = $_POST["Nome"];
 $preco = $_POST["Preço"];
