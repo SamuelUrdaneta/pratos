@@ -22,6 +22,24 @@ $prato = $resultado->fetch_assoc();
     <link rel="stylesheet" href="..style/style.css">
 </head>
 <body>
-    
+    <h2></h2>
+    <h2>Editando prato<?php echo $prato["titulo"]?>!</h2>
+        <form action="atualizar.php" method="POST">
+            <input type="hidden" name="id" value="<?php echo $prato["id"]?>">
+
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" value="<?php echo $prato["nome"]?>">
+            <br>
+            <label for="categoria">Categoria:</label>
+            <input type="text" name="Categoria" value="<?php echo $prato["categoria"]?>">
+            <br>
+            <label for="descrição">descrição:</label>
+            <input type="text" name="descrição" value="<?php echo $prato["descrição"]?>">
+            <br>
+            <label for="preço">Preço:</label>
+            <input type="number" name="preço" value="<?php echo $prato["preço"]?>">
+            <br>
+            <button type="submit">Atualizar</button>
+        </form>
 </body>
 </html>
