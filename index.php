@@ -1,7 +1,7 @@
 <?php
 
 include "infra/conexao.php";
-$pratos = mysqli_querry($conexao, "SELECT * FROM pratos")
+$cadastro_pratos = mysqli_querry($conexao, "SELECT * FROM cadastro_pratos")
 
 ?>
 
