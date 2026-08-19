@@ -1,11 +1,11 @@
 <?php 
 
-include "../infra/conexao.php"
+include "../infra/conexao.php";
 
-$id = $_GET["id"]
+$id = $_GET["id"];
 
-$stmt = $conexao->prepare("DELETE FROM pratos WHERE id=?";)
+$stmt = $conexao->prepare("DELETE FROM cardapio WHERE cardapio_id=?");
 $stmt->bind_param("i", $id);
-$smtt->execute();
+$stmt->execute();
 
 ?>

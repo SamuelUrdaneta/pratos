@@ -4,11 +4,11 @@ include "../infra/conexao.php";
 
 $id = $_GET["id"];
 
-$stmt = $conexao->prepare("SELECT * FROM livros WHERE id=?");
+$stmt = $conexao->prepare("SELECT * FROM cardapio WHERE cardapio_id=?");
 $stmt->bind_param("i", $id);
-$smtt->execute();
+$stmt->execute();
 $result = $stmt->get_result();
-$prato = $resultado->fetch_assoc();
+$cardapio = $result->fetch_assoc();
 
 ?>
 
@@ -19,25 +19,23 @@ $prato = $resultado->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardápio</title>
-    <link rel="stylesheet" href="..style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
     <h2></h2>
-    <h2>Editando prato<?php echo $prato["titulo"]?>!</h2>
+    <h2>Editando prato<?php echo $cardapio["titulo"]?>!</h2>
         <form action="atualizar.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $prato["id"]?>">
-
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" value="<?php echo $prato["nome"]?>">
+            <label for="Nome">Nome:</label>
+            <input type="text" name="Nome" value="<?php echo $cardapio["cardapio_nome"]?>">
             <br>
-            <label for="categoria">Categoria:</label>
-            <input type="text" name="Categoria" value="<?php echo $prato["categoria"]?>">
+            <label for="Categoria">Categoria:</label>
+            <input type="text" name="Categoria" value="<?php echo $cardapio["cardapio_categoria"]?>">
             <br>
-            <label for="descrição">descrição:</label>
-            <input type="text" name="descrição" value="<?php echo $prato["descrição"]?>">
+            <label for="Descrição">descrição:</label>
+            <input type="text" name="Descrição" value="<?php echo $cardapio["cardapio_descrição"]?>">
             <br>
-            <label for="preço">Preço:</label>
-            <input type="number" name="preço" value="<?php echo $prato["preço"]?>">
+            <label for="Preço">Preço:</label>
+            <input type="number" name="Preço" value="<?php echo $cardapio["cardapio_preço"]?>">
             <br>
             <button type="submit">Atualizar</button>
         </form>

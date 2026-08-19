@@ -1,7 +1,7 @@
 <?php
 
-include "infra/conexao.php";
-$cadastro_pratos = mysqli_querry($conexao, "SELECT * FROM cadastro_pratos")
+include "../infra/conexao.php";
+$cardapio = mysqli_query($conexao, "SELECT * FROM cardapio");
 
 ?>
 
@@ -18,9 +18,9 @@ $cadastro_pratos = mysqli_querry($conexao, "SELECT * FROM cadastro_pratos")
         <h1>Cardápio</h1>
     </header>
     <h2>Adicione um novo prato</h2>
-    <form action="..public/cadastrar.php" method="POST">
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome">
+    <form action="public/cadastrar.php" method="POST">
+        <label for="Nome">Nome:</label>
+        <input type="text" name="Nome">
         <br>
         <label for="Categoria">Categoria:</label>
         <input type="text" name="Categoria">
@@ -30,6 +30,8 @@ $cadastro_pratos = mysqli_querry($conexao, "SELECT * FROM cadastro_pratos")
         <br>
         <label for="Preço">Preço:</label>
         <input type="number" name="Preço">
+        <br>
+        <button type="submit">Cadastrar</button>
     </form>
     <div>
         <h2>Pratos cadastrados</h2>
@@ -41,16 +43,16 @@ $cadastro_pratos = mysqli_querry($conexao, "SELECT * FROM cadastro_pratos")
                 <th>Descrição</th>
                 <th>Preço</th>
             </tr>
-            <?php while ($prato = mysqli_fetch_assoc($prato)) { ?>
+            <?php while ($cardapio = mysqli_fetch_assoc($cardapio)) { ?>
             <tr>
-                <td><?php echo $prato["id"] ?></td>
-                <td><?php echo $prato["Nome"] ?></td>
-                <td><?php echo $prato["Categoria"] ?></td>
-                <td><?php echo $prato["Descrição"] ?></td>
-                <td><?php echo $prato["Preço"] ?></td>
+                <td><?php echo $cardapio["cardapio_id"] ?></td>
+                <td><?php echo $cardapio["cardapio_nome"] ?></td>
+                <td><?php echo $cardapio["cardapio_categoria"] ?></td>
+                <td><?php echo $cardapio["cardapio_descricao"] ?></td>
+                <td><?php echo $cardapio["cardapio_preco"] ?></td>
                 <td>
-                    <a href="..public/editar.php?id<?php echo $prato["id"] ?>">Editar</a>
-                    <a href="..public/excluir.php?id<?php echo $prato["id"] ?>">Excluir</a>
+                    <a href="public/editar.php?id=<?php echo $cardapio["id"] ?>">Editar</a>
+                    <a href="public/excluir.php?id=<?php echo $cardapio["id"] ?>">Excluir</a>
                 </td>
                 <?php } ?>
             </tr>
